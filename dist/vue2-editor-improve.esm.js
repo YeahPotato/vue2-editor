@@ -1,5 +1,5 @@
 /*!
- * vue2-editor-improve v1.0.1 
+ * vue2-editor-improve v1.0.3 
  * (c) 2019 joke
  * Released under the MIT License.
  */
@@ -906,7 +906,7 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var version = "1.0.1"; // Declare install function executed by Vue.use()
+var version = "1.0.3"; // Declare install function executed by Vue.use()
 
 function install(Vue) {
   if (install.installed) return;

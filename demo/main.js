@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from '~entry'
+import App from '../src/App'
 import plugin from '../src/index'
 
 Vue.use(plugin)
