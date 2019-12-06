@@ -1,4 +1,4 @@
-# Vue2Editor
+# Vue2EditorImprove
 
 > An easy-to-use but yet powerful and customizable rich text editor powered by Quill.js and Vue.js
 

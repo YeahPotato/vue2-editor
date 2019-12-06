@@ -7,7 +7,7 @@
       id="file-upload"
       ref="fileInput"
       type="file"
-      accept="image/*"
+      :accept="accpedFileType"
       style="display:none;"
       @change="emitImageInfo($event)"
     />
@@ -56,13 +56,19 @@ export default {
     useMarkdownShortcuts: {
       type: Boolean,
       default: false
+    },
+    accpedFileType: {
+      type: String,
+      default: "image/*"
+    },
+    customLinkPlaceholder:{
+      type:String,
+      default:''
     }
   },
-
   data: () => ({
     quill: null
   }),
-
   watch: {
     value(val) {
       if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
@@ -73,18 +79,15 @@ export default {
       this.quill.enable(!status);
     }
   },
-
   mounted() {
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
   },
-
   beforeDestroy() {
     this.quill = null;
     delete this.quill;
   },
-
   methods: {
     initializeEditor() {
       this.setupQuillEditor();
@@ -105,6 +108,11 @@ export default {
 
       this.prepareEditorConfig(editorConfig);
       this.quill = new Quill(this.$refs.quillContainer, editorConfig);
+      if(this.customLinkPlaceholder){
+        var tooltip = this.quill.theme.tooltip;
+        var input = tooltip.root.querySelector("input[data-link]");
+        input.dataset.link = this.customLinkPlaceholder;
+      }
     },
 
     setModules() {
