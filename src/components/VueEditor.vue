@@ -20,7 +20,7 @@ import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
-
+import {addQuillTitle} from "@/helpers/addTitle";
 export default {
   name: "VueEditor",
   mixins: [oldApi],
@@ -94,6 +94,7 @@ export default {
       this.checkForCustomImageHandler();
       this.handleInitialContent();
       this.registerEditorEventListeners();
+      addQuillTitle()
       this.$emit("ready", this.quill);
     },
 
